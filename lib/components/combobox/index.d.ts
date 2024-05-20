@@ -1,0 +1,12 @@
+export * from './combobox-context-id';
+export * from './combobox-context.type';
+export { Combobox as Root } from './combobox';
+export { type ResolvedOption } from './combobox';
+export { ComboboxLabel as Label } from './combobox-label';
+export { ComboboxControl as Control } from './combobox-control';
+export { ComboboxInput as Input } from './combobox-input';
+export { ComboboxTrigger as Trigger } from './combobox-trigger';
+export { ComboboxListbox as Listbox } from './combobox-listbox';
+export { ComboboxOption as Option } from './combobox-option';
+export { ComboboxIcon as Icon } from './combobox-icon';
+export { ComboboxPopover as Popover } from './combobox-popover';

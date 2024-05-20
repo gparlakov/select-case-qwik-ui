@@ -1,4 +1,4 @@
-import { NoSerialize, Signal, createContextId, noSerialize, useComputed$, useContextProvider } from '@builder.io/qwik';
+import { type NoSerialize, noSerialize } from '@builder.io/qwik';
 
 export type CategoryVM = {
   id: string | number;
@@ -10,7 +10,7 @@ export interface AppStore {
   allCategories: NoSerialize<CategoryVM[]>;
   categoryBadges: CategoryVM[];
   filter: {
-    categories: NoSerialize<CategoryVM[]>;
+    categories?: string[];
   }
 }
 

@@ -1,5 +1,5 @@
-import { component$, useComputed$, useStylesScoped$ } from '@builder.io/qwik';
-import { AppStore } from "~/core/app.store";
+import { component$ } from '@builder.io/qwik';
+import { type AppStore, getApplication } from '../../core/app.store';
 
 export const CategoryBadges = component$(({ categoryBadges }: Pick<AppStore, 'categoryBadges'>) => {
   return (

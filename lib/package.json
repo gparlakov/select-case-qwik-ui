@@ -1,0 +1,33 @@
+{
+  "name": "@qwik-ui/headless-local",
+  "version": "0.3.9",
+  "description": "Qwik UI headless components library",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./index.qwik.cjs",
+  "qwik": "./index.qwik.mjs",
+  "module": "./index.qwik.mjs",
+  "types": "./index.d.ts",
+  "type": "module",
+  "scripts": {
+    "setup.chrome.113": "npx tsx ./scripts/prepare-chrome-113.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.qwik.mjs",
+      "require": "./index.qwik.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@builder.io/qwik": "^1.5.4"
+  },
+  "devDependencies": {
+    "tsx": "4.7.2"
+  }
+}
