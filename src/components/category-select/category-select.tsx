@@ -1,4 +1,4 @@
-import { component$, useComputed$, useStylesScoped$ } from '@builder.io/qwik';
+import { component$, useComputed$, useStylesScoped$, useId, useSignal, useTask$} from '@builder.io/qwik';
 
 import styles from './category-select.scss?inline';
 import { getApplication } from '../../core/app.store';
@@ -13,6 +13,15 @@ export const CategoriesSelect = component$(
   ({ cats, categoryBadges }: { cats?: Category[]; categoryBadges?: Category[] }) => {
     useStylesScoped$(styles);
     const selected = useComputed$<string[]>(() => categoryBadges?.map(c => c.id.toString()) ?? []);
+
+    const id1 = useId()
+    const id2 = useId();
+    const idSig = useSignal(id1);
+
+    useTask$(({track}) => {
+      track(() => categoryBadges);
+      idSig.value = idSig.value === id1 ? id2 : id1;
+    })
 
     return (
       <Select.Root
@@ -37,7 +46,7 @@ export const CategoriesSelect = component$(
               <Select.Item
                 value={c.id}
                 class="select-item flex justify-between flex-row data-[highlighted]:bg-gray-200"
-                key={c.id}
+                key={idSig.value + c.id}
               >
                 <Select.ItemLabel class="flex-grow">{c.name}</Select.ItemLabel>
                 <Select.ItemIndicator>✅</Select.ItemIndicator>
