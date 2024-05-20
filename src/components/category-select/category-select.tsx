@@ -35,7 +35,7 @@ export const CategoriesSelect = component$(
           >
             {cats?.map((c) => (
               <Select.Item
-                value={c.id}
+                value={c.id.toString()}
                 class="select-item flex justify-between flex-row data-[highlighted]:bg-gray-200"
                 key={c.id}
               >

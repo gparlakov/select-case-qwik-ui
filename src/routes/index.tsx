@@ -1,9 +1,9 @@
-import { component$, noSerialize, useComputed$, useStore, useStyles$, useTask$, useVisibleTask$ } from "@builder.io/qwik";
-import { DocumentHead } from "@builder.io/qwik-city";
+import { component$, noSerialize, useStore, useVisibleTask$ } from "@builder.io/qwik";
+import { type DocumentHead } from "@builder.io/qwik-city";
 
-import { AppStore, createApplication } from "../core/app.store";
-import { CategoriesSelect } from "~/components/category-select/category-select";
 import { CategoryBadges } from "~/components/category-badges/category-badges";
+import { CategoriesSelect } from "~/components/category-select/category-select";
+import { createApplication, type AppStore } from "../core/app.store";
 
 
 export const head: DocumentHead = {
@@ -17,7 +17,6 @@ export const head: DocumentHead = {
 };
 
 export default component$(() => {
-  useStyles$(global);
   // will create the store for the whole Index app (if we go to another route we need to recreated or move to layout)
   const appStore: AppStore = useStore({
     allCategories: noSerialize([]),
@@ -27,6 +26,7 @@ export default component$(() => {
     },
   });
 
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({cleanup}) => {
     // start the app once in browser
     const app = createApplication(appStore)
